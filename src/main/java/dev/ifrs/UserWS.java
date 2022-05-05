@@ -1,5 +1,7 @@
 package dev.ifrs;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,18 +11,32 @@ import javax.ws.rs.core.MediaType;
 
 import dev.ifrs.model.User;
 
-@Path("/api")
+@Path("/user")
 @Transactional
-public class Service {
+public class UserWS {
     
     @GET
-    @Path("/user/create/{name}")
+    @Path("/create/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public User createUser(@PathParam("name") String name){
         User user = new User();
         user.setName(name);
         user.persist();
         return user;
+    }
+
+    @GET
+    @Path("/list")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<User> list(){
+        return User.listAll();
+    }
+
+    @GET
+    @Path("/list/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public User list(@PathParam("id") Long id){
+        return User.findById(id);
     }
 
 }
