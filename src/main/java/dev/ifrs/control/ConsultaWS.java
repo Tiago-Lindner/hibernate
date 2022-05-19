@@ -28,7 +28,9 @@ public class ConsultaWS {
     if (pac == null)
         throw new BadRequestException("Paciente não encontrado"); 
 
-    //pac.addConsulta(consulta);
+//ver post
+    pac.addConsulta(consulta);
+    consulta.setPaciente(pac);
     pac.persistAndFlush();
 
     return consulta;

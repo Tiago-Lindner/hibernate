@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
@@ -32,13 +31,13 @@ public class Paciente extends PanacheEntity{
 	private String userSenha;
 	private String telefone;
 	private String endereco;
-	/*
-	//@OneToMany (cascade= CascadeType.PERSIST, fetch = FetchType.EAGER)
+	
+	@OneToMany (cascade= CascadeType.PERSIST, fetch = FetchType.EAGER)
     // name = nome da coluna que irá armazenar a chave estrangeira
     // na tabela Message (solução a partir da JPA 2)
     @JoinColumn(name="Consultas_Pac")
 	private Set<Consulta> consultas;
-*/
+
 	
 	//Contrutores
 	//ver o construtor sem parametros
@@ -55,7 +54,7 @@ public class Paciente extends PanacheEntity{
 		this.userSenha = userSenha;
 		this.endereco = endereco;
 	}
-	/*
+	
 	public Paciente(String nome, String cpf, String email, String userLogin, String userSenha, String endereco, Set<Consulta> consultas) {
 		this.nome = nome;
 		this.cpf = cpf;
@@ -65,7 +64,7 @@ public class Paciente extends PanacheEntity{
 		this.endereco = endereco;
 		this.consultas = consultas;
 	}
-	*/
+	
 	
 	//Getters e Setters
 	public String getNome() {
@@ -116,7 +115,7 @@ public class Paciente extends PanacheEntity{
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	/*
+	
 	public Set<Consulta> getConsultas() {
 		return consultas;
 	}
@@ -126,7 +125,7 @@ public class Paciente extends PanacheEntity{
 	
 	public void addConsulta(Consulta consulta) {
 	}
-*/
+
 
 // funcoes
 /*
