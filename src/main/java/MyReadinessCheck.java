@@ -10,7 +10,7 @@ public class MyReadinessCheck implements HealthCheck{
     public HealthCheckResponse call() {
         HealthCheckResponseBuilder response = HealthCheckResponse.named("Database Connection Health Check");
 
-        response.up().withData("key", "value");
+        response.up().withData("key", "8001");
 
         return response.build();
     }
