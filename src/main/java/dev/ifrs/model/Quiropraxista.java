@@ -18,8 +18,8 @@ public class Quiropraxista extends PanacheEntity{
 	private String nome;
 	private String cpf;
 	private String email;
-
 	private String crm;
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     // name = nome da coluna que irá armazenar a chave estrangeira
     // na tabela Message (solução a partir da JPA 2)
@@ -82,6 +82,10 @@ public class Quiropraxista extends PanacheEntity{
 	}
 	public void setConsultas(Set<Consulta> consultas) {
 		this.consultas = consultas;
+	}
+
+	public void addConsulta(Consulta consulta) {
+		//this.consultas.add(consulta);
 	}
 	
 }

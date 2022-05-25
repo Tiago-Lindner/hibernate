@@ -30,12 +30,13 @@ public class PacienteWS {
     }
 
     @GET
-    //@Path("/listar")
+    @Path("/listar")
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public List<Paciente> list() {
         // 3 - O método `listAll` recupera todos os objetos da classe User.
         return Paciente.listAll();
+        
     }
 
     @POST
@@ -44,6 +45,11 @@ public class PacienteWS {
         Paciente pac = new Paciente();
         pac.setNome(paci.getNome());
         pac.setCpf(paci.getCpf());
+        pac.setEmail(paci.getEmail());
+        pac.setUserLogin(paci.getUserLogin());
+        pac.setUserSenha(paci.getUserSenha());
+        pac.setTelefone(paci.getTelefone());
+        pac.setEndereco(paci.getEndereco());
         pac.persist();
     }
     

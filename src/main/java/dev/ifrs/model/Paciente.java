@@ -105,7 +105,7 @@ public class Paciente extends PanacheEntity{
 	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefones(String telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	
@@ -124,6 +124,7 @@ public class Paciente extends PanacheEntity{
 	}
 	
 	public void addConsulta(Consulta consulta) {
+		//this.consultas.add(consulta);
 	}
 
 
