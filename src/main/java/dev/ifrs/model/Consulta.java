@@ -5,29 +5,32 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
 public class Consulta extends PanacheEntity {
 
     //Atributo
-	private double data;
-	private double horario;
+	private String data;
+	private String horario;
 	private String situacao;
 	
 	@ManyToOne (cascade= CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JsonManagedReference
 	private Paciente paciente;
 	@ManyToOne (cascade= CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Quiropraxista quiro;
 	
 	//Contrutores
 	public Consulta() {};
-	public Consulta(double horario, String sit) {
+	public Consulta(String horario, String sit) {
 		this.horario = horario;
 		this.situacao = sit;
 	}
 	
-	public Consulta(double horario, String sit, Paciente paciente,
+	public Consulta(String horario, String sit, Paciente paciente,
 			Quiropraxista quiro) {
 		this.horario = horario;
 		this.situacao = sit;
@@ -35,7 +38,7 @@ public class Consulta extends PanacheEntity {
 		this.quiro = quiro;
 	}
 	
-	public Consulta(double data, double horario, String sit, Paciente paciente,
+	public Consulta(String data, String horario, String sit, Paciente paciente,
 			Quiropraxista quiro) {
 		this.data = data;
 		this.horario = horario;
@@ -45,17 +48,17 @@ public class Consulta extends PanacheEntity {
 	}
 	
 	//Getters e Setters
-	public double getData() {
+	public String getData() {
 		return data;
 	}
-	public void setData(double data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 	
-	public double getHorario() {
+	public String getHorario() {
 		return horario;
 	}
-	public void setHorario(double horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 	

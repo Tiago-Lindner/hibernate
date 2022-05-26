@@ -35,9 +35,9 @@ public class PacienteWS {
     @Transactional
     public List<Paciente> list() {
         // 3 - O método `listAll` recupera todos os objetos da classe User.
-        return Paciente.listAll();
-        
+        return Paciente.listAll(); 
     }
+    //ver hibernate
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

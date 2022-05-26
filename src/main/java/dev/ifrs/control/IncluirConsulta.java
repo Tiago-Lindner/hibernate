@@ -2,21 +2,21 @@ package dev.ifrs.control;
 
 public class IncluirConsulta {
 
-	private double data;
-	private double horario;
+	private String data;
+	private String horario;
 	//private String situacao;
 
-    public double getData() {
+    public String getData() {
         return data;
     }
-    public void setData(double data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public double getHorario() {
+    public String getHorario() {
         return horario;
     }
-    public void setHorario(double horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 /*

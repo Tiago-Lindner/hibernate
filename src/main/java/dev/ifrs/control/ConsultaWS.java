@@ -71,5 +71,7 @@ public class ConsultaWS {
         cons.setHorario(consulta.getHorario());
         cons.persist();
     }
+    //Ver como banco dados funciona
+    //Se nao precisa SQL
     
 }

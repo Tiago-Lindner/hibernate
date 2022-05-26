@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
@@ -24,6 +26,7 @@ public class Quiropraxista extends PanacheEntity{
     // name = nome da coluna que irá armazenar a chave estrangeira
     // na tabela Message (solução a partir da JPA 2)
     @JoinColumn(name="Consultas_Quiro")
+	@JsonBackReference
 	private Set<Consulta> consultas;
 
 	//precisa de consultas?
