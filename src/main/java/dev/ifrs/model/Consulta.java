@@ -8,9 +8,10 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-public class Consulta extends PanacheEntity {
+public class Consulta extends PanacheEntityBase {
 
     //Atributo
 	private String data;
@@ -21,6 +22,7 @@ public class Consulta extends PanacheEntity {
 	@JsonManagedReference
 	private Paciente paciente;
 	@ManyToOne (cascade= CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JsonManagedReference
 	private Quiropraxista quiro;
 	
 	//Contrutores

@@ -11,9 +11,10 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-public class Quiropraxista extends PanacheEntity{
+public class Quiropraxista extends PanacheEntityBase{
     
     //Atributos
 	
