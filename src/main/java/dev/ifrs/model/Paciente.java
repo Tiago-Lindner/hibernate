@@ -3,7 +3,6 @@ package dev.ifrs.model;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,10 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+//import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
@@ -27,9 +27,13 @@ public class Paciente extends PanacheEntityBase{
 	//Atributos
 	
     @Id
-	@Column(name="IdPessoa")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@SequenceGenerator(
+		name = "pacienteSeq",
+		sequenceName = "pac_id_seq",	
+		allocationSize = 1,
+		initialValue = 1000)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pacienteSeq")
+	
 	
 	private String nome;
 	private String cpf;
@@ -132,7 +136,7 @@ public class Paciente extends PanacheEntityBase{
 	}
 	
 	public void addConsulta(Consulta consulta) {
-		//this.consultas.add(consulta);
+		this.consultas.add(consulta);
 	}
 
 

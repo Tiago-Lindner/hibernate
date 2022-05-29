@@ -23,12 +23,12 @@ import dev.ifrs.model.Quiropraxista;
 public class ConsultaWS {
 
    @GET
-   @Path("/salvar/{texto}/{idCons}/{idPac}/{idQuiro}")
+   @Path("/marcar/{idCons}/{idPac}/{idQuiro}")
    @Produces(MediaType.APPLICATION_JSON)
-   public Consulta salvar(@PathParam("texto") String texto, @PathParam("idCons") Long idCons, @PathParam("idPac") Long idPac, @PathParam("idQuiro") Long idQuiro){
+   public Consulta salvar(@PathParam("idCons") Long idCons, @PathParam("idPac") Long idPac, @PathParam("idQuiro") Long idQuiro){
 
     Consulta consulta = Consulta.findById(idCons);
-    consulta.setSituacao(texto);
+    consulta.setSituacao("MARCADA");
     consulta.persistAndFlush();
 
     Paciente pac = Paciente.findById(idPac);
@@ -52,6 +52,39 @@ public class ConsultaWS {
 
     return consulta;
    }
+
+    @GET
+    @Path("/cancelar/{idCons}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Consulta cancelar(@PathParam("idCons") Long idCons){
+        Consulta consulta = Consulta.findById(idCons);
+        consulta.setSituacao("CANCELADA");
+        consulta.persist();
+
+        return consulta;
+    }
+
+    @GET
+    @Path("/confirmar/{idCons}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Consulta confirmar(@PathParam("idCons") Long idCons){
+        Consulta consulta = Consulta.findById(idCons);
+        consulta.setSituacao("CONFIRMADA");
+        consulta.persist();
+
+        return consulta;
+    }
+
+    @GET
+    @Path("/realizar/{idCons}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Consulta realizar(@PathParam("idCons") Long idCons){
+        Consulta consulta = Consulta.findById(idCons);
+        consulta.setSituacao("REALIZADA");
+        consulta.persist();
+
+        return consulta;
+    }
 
     @GET
     @Path("/listar")

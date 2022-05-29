@@ -5,17 +5,29 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+//import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
 public class Quiropraxista extends PanacheEntityBase{
     
+	@Id
+	@SequenceGenerator(
+		name = "quiroSeq",
+		sequenceName = "pquiro_id_seq",	
+		allocationSize = 1,
+		initialValue = 2000)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "quiroSeq")
+
     //Atributos
 	
 	private String nome;
@@ -89,7 +101,7 @@ public class Quiropraxista extends PanacheEntityBase{
 	}
 
 	public void addConsulta(Consulta consulta) {
-		//this.consultas.add(consulta);
+		this.consultas.add(consulta);
 	}
 	
 }
