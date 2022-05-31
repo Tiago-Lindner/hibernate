@@ -14,18 +14,18 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-//import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+//import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-public class Paciente extends PanacheEntityBase{
+public class Paciente extends PanacheEntity{
     
     //private static final long serialVersionUID = 1L;
 	
 	// ver jwt
 
 	//Atributos
-	
+	/*
     @Id
 	@SequenceGenerator(
 		name = "pacienteSeq",
@@ -33,7 +33,7 @@ public class Paciente extends PanacheEntityBase{
 		allocationSize = 1,
 		initialValue = 1000)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pacienteSeq")
-	
+	*/
 	
 	private String nome;
 	private String cpf;

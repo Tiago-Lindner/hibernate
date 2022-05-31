@@ -14,12 +14,12 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-//import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+//import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-public class Quiropraxista extends PanacheEntityBase{
-    
+public class Quiropraxista extends PanacheEntity{
+    /*
 	@Id
 	@SequenceGenerator(
 		name = "quiroSeq",
@@ -27,7 +27,7 @@ public class Quiropraxista extends PanacheEntityBase{
 		allocationSize = 1,
 		initialValue = 2000)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "quiroSeq")
-
+*/
     //Atributos
 	
 	private String nome;
