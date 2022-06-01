@@ -33,7 +33,7 @@ public class PacienteWS {
     }
 
     @GET
-    @Path("/listarp")
+    @Path("/listar/pacientes")
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public List<Paciente> listarPac() {
@@ -42,7 +42,7 @@ public class PacienteWS {
     }
     
     @GET
-    @Path("/listarc/{idPac}")
+    @Path("/listar/consultas/{idPac}")
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Set<Consulta> listarCons(@PathParam("idPac") Long idPac) {
@@ -68,6 +68,16 @@ public class PacienteWS {
         pac.persist();
     }
 
+    @GET
+    @Path("/excluir/{idPac}")
+    @Produces(MediaType.APPLICATION_JSON)
+    //@Transactional
+    public void excluir(@PathParam("idPac") Long idPac){
+        Paciente pac = Paciente.findById(idPac);
+        if (pac == null)
+            throw new BadRequestException("Paciente não encontrado");
+        pac.delete();
+    }
 
     
 

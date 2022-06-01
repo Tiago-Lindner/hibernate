@@ -35,7 +35,6 @@ public class ConsultaWS {
     if (pac == null)
         throw new BadRequestException("Paciente não encontrado"); 
 
-//ver post
     pac.addConsulta(consulta);
     consulta.setPaciente(pac);
     pac.persistAndFlush();
@@ -107,4 +106,15 @@ public class ConsultaWS {
     //Ver como banco dados funciona
     //Se nao precisa SQL
     
+    @GET
+    @Path("/excluir/{idCons}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public void excluir(@PathParam("idCons") Long idCons){
+        Consulta consulta = Consulta.findById(idCons);
+        if (consulta == null)
+            throw new BadRequestException("Consulta não encontrada");
+        consulta.delete();
+    }
+
 }
