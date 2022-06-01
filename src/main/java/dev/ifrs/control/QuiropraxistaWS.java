@@ -3,6 +3,7 @@ package dev.ifrs.control;
 import java.util.List;
 
 import javax.transaction.Transactional;
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -49,6 +50,17 @@ public class QuiropraxistaWS {
         quiro.setEmail(qui.getEmail());
         quiro.setCrm(qui.getCrm());
         quiro.persist();
+    }
+
+    @GET
+    @Path("/excluir/{idQuiro}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public void excluir(@PathParam("idQuiro") Long idQuiro){
+        Quiropraxista quiro = Quiropraxista.findById(idQuiro);
+        if (quiro == null)
+            throw new BadRequestException("Quiropraxista não encontrado");
+        quiro.delete();
     }
 
 }

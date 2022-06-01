@@ -11,13 +11,13 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-//import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+//import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-public class Consulta extends PanacheEntity {
+public class Consulta extends PanacheEntityBase {
 
-	/*
+	
 	//regra id
 	@Id
 	@SequenceGenerator(
@@ -26,7 +26,8 @@ public class Consulta extends PanacheEntity {
 		allocationSize = 1,
 		initialValue = 3000)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "consultaSeq")
-*/
+	public Long id;
+
     //Atributo
 	private String data;
 	private String horario;
