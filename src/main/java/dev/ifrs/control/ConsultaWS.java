@@ -106,6 +106,7 @@ public class ConsultaWS {
     //Ver como banco dados funciona
     //Se nao precisa SQL
     
+    //nao funciona pq tem dependencias entre classes
     @GET
     @Path("/excluir/{idCons}")
     @Produces(MediaType.APPLICATION_JSON)
